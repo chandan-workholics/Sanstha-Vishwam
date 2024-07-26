@@ -19,7 +19,7 @@ li {
 }
 
 body {
-    background: #EFF7FF;
+    background: #f8f9fa;
 }
 
 .table td {
@@ -28,24 +28,12 @@ body {
 
 /*--------------------- Navbar-CSS --------------------*/
 
-.navbar-container {
-    background: #2065AE;
-    color: #fff;
-}
-
-.navbar-brand {
-    font-family: 'Lemon', serif;
-    font-size: 48px;
-    color: #fff;
-}
-
 .nav-link:hover {
-    color: #fff;
-    letter-spacing: 3px;
+    color: #dc3545;
 }
 
 .nav-link {
-    color: #fff;
+    color: #263F53;
     font-size: 18px;
     font-weight: 500;
     line-height: normal;

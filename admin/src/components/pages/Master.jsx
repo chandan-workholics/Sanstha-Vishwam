@@ -36,7 +36,7 @@ const Master = () => {
     const addproduct = async (e) => {
         e.preventDefault();
         const { name, price, unit } = post
-        const fetchdata = fetch('http://206.189.130.102:6060/api/v1/add-product', {
+        const fetchdata = fetch('http://206.189.130.102:6292/api/v1/add-product', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: name, price: price, unit: unit }),
@@ -55,7 +55,7 @@ const Master = () => {
 
     const upadateproduct = async (id) => {
         const { name } = edit
-        const fetchdata = fetch(`http://206.189.130.102:6060/api/v1/update-product/${id}`, {
+        const fetchdata = fetch(`http://206.189.130.102:6292/api/v1/update-product/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: name }),

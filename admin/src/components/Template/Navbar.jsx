@@ -12,7 +12,7 @@ const Navbar = () => {
                 <div className="container ">
                     <nav className="navbar navbar-expand-sm">
                         <div className="container-fluid">
-                            <Link className="navbar-brand" to="#">Vishwam</Link>
+                            <Link className="navbar-brand text-warning fs-3 fw-bolder" to="#">Sanstha Vishwam</Link>
                             <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                                 <span className="text-white"><i class="fa-solid fa-bars-staggered"></i></span>
                             </button>
@@ -38,7 +38,7 @@ const Navbar = () => {
                                 <ul className="navbar-nav">
                                     <li className="nav-item dropdown">
                                         <Link to="/" data-bs-toggle="dropdown" className='nav-icon pe-md-0 nav-link'>
-                                            <img src={require("../img/profile-img.jpg")} className='avatar profile img-fluid rounded' alt="" />
+                                            <img src={require("../img/profile-img.jpg")} className='avatar profile img-fluid rounded border border-warning' alt="" />
                                         </Link>
                                         <div className="dropdown-menu dropdown-menu-end">
                                             {/* <Link to="/home" className='dropdown-item'>Profile</Link>
