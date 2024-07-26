@@ -135,7 +135,7 @@ const Registration = () => {
                   <div className="card-body">
                     <div className="row">
                       <div className="col-md-12 mb-3">
-                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Full Name</label>
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Full Name (पूरा नाम)</label>
                         <input
                           type="text"
                           className="form-control text-263F53 rounded-3"
@@ -148,16 +148,16 @@ const Registration = () => {
                         {validationErrors.name && <small className="text-danger">{validationErrors.name}</small>}
                       </div>
                       <div className="col-md-12 mb-3">
-                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Email</label>
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Email (ईमेल)</label>
                         <input type="email" className="form-control text-8A8A8A rounded-3" id="exampleInput" placeholder='abc@example.com' name='email'
                           value={formData.email}
                           onChange={handleChange} />
                         {validationErrors.email && <small className="text-danger">{validationErrors.email}</small>}
                       </div>
                       <div className="col-md-6 mb-3">
-                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Occupation</label>
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Occupation (पूरा नाम)</label>
                         <select id="inputState" className="form-select text-8A8A8A rounded-3" name='ocupation' onChange={handleChange}>
-                          <option value="" disabled selected hidden>Select Occupation</option>
+                          <option value="" disabled selected hidden>Select Occupation (पेशा)</option>
                           {occupations.map((val, index) => (
                             <option key={index} value={val._id}>{val.name}</option>
                           ))}
@@ -165,7 +165,7 @@ const Registration = () => {
                         {validationErrors.ocupation && <small className="text-danger">{validationErrors.ocupation}</small>}
                       </div>
                       <div className="col-md-6 mb-3">
-                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Mobile No.</label>
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Mobile No. (पूरा नाम)</label>
                         <input
                           type="number"
                           className="form-control text-263F53 rounded-3"
@@ -180,28 +180,28 @@ const Registration = () => {
                         {validationErrors.number && <small className="text-danger">{validationErrors.number}</small>}
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Address </label>
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Address (पूरा नाम)</label>
                         <textarea className="form-control rounded-3" placeholder="Enter address here" id="floatingTextarea2" style={{ height: "70px" }} name='adress'
                           value={formData.adress}
                           onChange={handleChange}></textarea>
                         {validationErrors.adress && <small className="text-danger">{validationErrors.adress}</small>}
                       </div>
                       <div className="col-md-6 mb-3">
-                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">State</label>
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">State (पूरा नाम)</label>
                         <input type="text" className="form-control text-263F53 rounded-3" id="exampleInput" placeholder='Enter State' name='state'
                           value={formData.state}
                           onChange={handleChange} />
                         {validationErrors.state && <small className="text-danger">{validationErrors.state}</small>}
                       </div>
                       <div className="col-md-6 mb-3">
-                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">City</label>
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">City (पूरा नाम)</label>
                         <input type="text" className="form-control text-263F53 rounded-3" id="exampleInput" placeholder='Enter City' name='city'
                           value={formData.city}
                           onChange={handleChange} />
                         {validationErrors.city && <small className="text-danger">{validationErrors.city}</small>}
                       </div>
                       <div className="col-md-6 mb-3">
-                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Aadhar No.</label>
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Aadhar No. (पूरा नाम)</label>
                         <input
                           type="number"
                           className="form-control text-263F53 rounded-3"
@@ -216,7 +216,7 @@ const Registration = () => {
                         {validationErrors.adharno && <small className="text-danger">{validationErrors.adharno}</small>}
                       </div>
                       <div className="col-md-6 mb-3">
-                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Reference</label>
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Reference (पूरा नाम)</label>
                         <input type="text" className="form-control text-263F53 rounded-3" id="exampleInput" placeholder='Enter Reference Name' name='reference'
                           value={formData.reference}
                           onChange={handleChange} />

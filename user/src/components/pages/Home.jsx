@@ -71,7 +71,7 @@ const Home = () => {
 
 
                                     {filteredData?.filter(item => item?.status === 1).map((item, index) => (
-                                        <div key={index} class="col">
+                                        <div key={index} class="col-md-3 mb-4">
                                             <div class="service-card">
                                                 <div class="icon-wrapper">
                                                     <i class="fa-solid fa-user text-danger"></i>
@@ -101,7 +101,7 @@ const Home = () => {
             </main>
 
 
-          
+
 
         </>
     );
