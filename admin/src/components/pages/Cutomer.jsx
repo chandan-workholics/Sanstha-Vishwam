@@ -111,7 +111,7 @@ const Customer = () => {
                         <td>{val.adharno}</td>
                         <td>{val.reference}</td>
                         <td>{val.status === 1 ?
-                          <button type="button" className="btn btn-sm py-1 btn-success text-white mx-1 d-flex justify-content-center" style={{width:"90px"}}>Active </button> : <button type="button" className="btn btn-sm py-1 btn-warning text-white mx-1">Inactive </button>}</td>
+                          <button type="button" className="btn btn-sm py-1 btn-success text-white mx-1 d-flex justify-content-center" style={{width:"90px"}}>Active </button> : <button type="button" className="btn btn-sm py-1 btn-warning text-white mx-1 d-flex justify-content-center" style={{width:"90px"}}>Inactive </button>}</td>
                         <td>
                           <div className='d-flex justify-content-center'>
                             <button type="button" className="btn btn-sm btn-info mx-1 text-white d-flex justify-content-center" style={{width:"35px", height:"35px"}} onClick={() => handleShow(val)}><i class="fa-solid fa-pen-to-square"></i> </button>
