@@ -35,11 +35,11 @@ const Master = () => {
 
     const addproduct = async (e) => {
         e.preventDefault();
-        const { name, price, unit } = post
-        const fetchdata = fetch('http://206.189.130.102:6292/api/v1/add-product', {
+        const { name } = post
+        const fetchdata = fetch('http://206.189.130.102:6292/api/v1/add-Ocupation', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: name, price: price, unit: unit }),
+            body: JSON.stringify({ name: name }),
         })
         const response = await fetchdata;
         await response.json();
@@ -47,7 +47,7 @@ const Master = () => {
             alert('ocupation add successfully')
             handleClose();
             getocupation();
-            setPost({ name: '', price: '', unit: '' })
+            setPost({ name: '' })
         } else {
             alert("Invalid Credentials");
         }
@@ -55,7 +55,7 @@ const Master = () => {
 
     const upadateproduct = async (id) => {
         const { name } = edit
-        const fetchdata = fetch(`http://206.189.130.102:6292/api/v1/update-product/${id}`, {
+        const fetchdata = fetch(`http://206.189.130.102:6292/api/v1/update-Ocupation/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: name }),
