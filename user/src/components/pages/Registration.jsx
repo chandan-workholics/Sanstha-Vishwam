@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import registrationFormImg from '../img/registrationfrom-img.png'
+import registrationFormImg from '../img/registrationfrom-img.png';
 import Navbar from '../Template/Navbar';
+import thankyouImg from '../img/thankyou-png.png';
+import { Link } from "react-router-dom";
 
 const Registration = () => {
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     number: '',
-    address: '',
+    adress: '',
     state: '',
     city: '',
     adharno: '',
@@ -18,6 +19,7 @@ const Registration = () => {
 
   const [validationErrors, setValidationErrors] = useState({});
   const [occupations, setOccupations] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false); // New state for modal visibility
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -95,8 +97,7 @@ const Registration = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json();
-      alert('Successfully Registered');
+      setModalVisible(true); // Show modal on successful registration
     } catch (error) {
       console.error('Error:', error);
     }
@@ -180,10 +181,10 @@ const Registration = () => {
                       </div>
                       <div className="mb-3">
                         <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Address </label>
-                        <textarea className="form-control rounded-3" placeholder="Enter address here" id="floatingTextarea2" style={{ height: "70px" }} name='address'
-                          value={formData.address}
+                        <textarea className="form-control rounded-3" placeholder="Enter address here" id="floatingTextarea2" style={{ height: "70px" }} name='adress'
+                          value={formData.adress}
                           onChange={handleChange}></textarea>
-                        {validationErrors.address && <small className="text-danger">{validationErrors.address}</small>}
+                        {validationErrors.adress && <small className="text-danger">{validationErrors.adress}</small>}
                       </div>
                       <div className="col-md-6 mb-3">
                         <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">State</label>
@@ -230,6 +231,25 @@ const Registration = () => {
           </div>
         </div>
       </main>
+
+      {modalVisible && (
+        <div className="modal show" tabIndex="-1" style={{ display: 'block' }}>
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content rounded-5 shadow">
+              {/* <div className="modal-header">
+                <button type="button" className="btn-close" onClick={() => setModalVisible(false)} aria-label="Close"></button>
+              </div> */}
+              <div className="modal-body">
+                <img src={thankyouImg} alt="" className="w-100 img-fluid" />
+              </div>
+              <div className="modal-footer justify-content-center">
+                <Link to="/home" className="text-danger link-underline-light" onClick={() => setModalVisible(false)}>Go to Home Page <i class="fa-solid fa-house ms-2 text-danger"></i></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
     </>
   )
 }
