@@ -31,7 +31,7 @@ const LoginCard = () => {
         if (response.status === 200) {
             sessionStorage.setItem("token", res.token);
             alert('Log-in successfully')
-            navigate("/registration-form");
+            navigate("/home");
         } else {
             alert("Invalid Credentials");
         }
@@ -44,7 +44,7 @@ const LoginCard = () => {
                 <div className="container " style={{ minHeight: "100vh" }}>
                     <div className="row d-flex align-items-center" style={{ minHeight: "100vh" }}>
                         <div className="col-md-6 col-lg-4 mx-auto">
-                            <h3 className='text-263F53 text-center fw-bolder mb-4'>Login</h3>
+                            <h3 className='text-263F53 text-center fw-bolder mb-4'>लॉग इन करें</h3>
                             <div className="card rounded-5 shadow border-0 overflow-hidden">
                                 <div className="card-body p-4">
                                     <div className="form-group mb-3">
@@ -83,7 +83,7 @@ const LoginCard = () => {
                                     </div>
                                     <button type="submit" className="btn btn-danger w-100 py-2 bg-00AFEF my-3" onClick={Submit}>Login</button>
                                     <div className="links text-center">
-                                        <span className='fw-semibold text-263F53'>New to Sanstha Vishwam? <Link to="/sign-up" className='text-premary modal-link'>Signup Now</Link></span>
+                                        <span className='fw-semibold text-263F53'>संस्था विश्वम् में नये हैं ? <Link to="/sign-up" className='text-premary modal-link'>Signup Now</Link></span>
                                     </div>
                                 </div>
                             </div>

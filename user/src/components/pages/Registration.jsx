@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import registrationFormImg from '../img/registrationfrom-img.png'
+import Navbar from '../Template/Navbar';
 
 const Registration = () => {
 
@@ -14,62 +15,76 @@ const Registration = () => {
     reference: '',
     ocupation: ''
   });
+
+  const [validationErrors, setValidationErrors] = useState({});
   const [occupations, setOccupations] = useState([]);
-
-  // const handleChange = (event) => {
-  //   // Destructure the event target for easier access
-  //   const { name, value } = event.target;
-
-  //   // Special handling for specific fields
-  //   if (name === 'number') {
-  //     // Remove non-digit characters and limit to 10 characters
-  //     const cleanedValue = value.replace(/\D/g, '').slice(0, 10);
-  //     setFormData({ ...formData, [name]: cleanedValue });
-  //   } else if (name === 'adharno') {
-  //     // Remove non-digit characters and limit to 12 characters
-  //     const cleanedValue = value.replace(/\D/g, '').slice(0, 12);
-  //     setFormData({ ...formData, [name]: cleanedValue });
-  //   } else if (name === 'name') {
-  //     // Validate name to allow only alphabetic characters
-  //     const cleanedValue = value.replace(/[^A-Za-z]/ig, '');
-  //     setFormData({ ...formData, [name]: cleanedValue });
-  //   } else {
-  //     // For other fields, update form data as usual
-  //     setFormData({ ...formData, [name]: value });
-  //   }
-  // };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    let cleanedValue = value;
+    let error = '';
 
-    if (name === 'number') {
-      const cleanedValue = value.replace(/\D/g, '').slice(0, 10);
-      setFormData(prevState => ({ ...prevState, [name]: cleanedValue }));
-    } else if (name === 'adharno') {
-      const cleanedValue = value.replace(/\D/g, '').slice(0, 12);
-      setFormData(prevState => ({ ...prevState, [name]: cleanedValue }));
-    } else if (name === 'name') {
-      const cleanedValue = value.replace(/[^A-Za-z]/ig, '');
-      setFormData(prevState => ({ ...prevState, [name]: cleanedValue }));
-    } else {
-      setFormData(prevState => ({ ...prevState, [name]: value }));
+    switch (name) {
+      case 'number':
+        cleanedValue = value.replace(/\D/g, '').slice(0, 10);
+        if (cleanedValue.length !== 10) {
+          error = 'Mobile number must be 10 digits.';
+        }
+        break;
+      case 'adharno':
+        cleanedValue = value.replace(/\D/g, '').slice(0, 12);
+        if (cleanedValue.length !== 12) {
+          error = 'Aadhar number must be 12 digits.';
+        }
+        break;
+      case 'name':
+        cleanedValue = value.replace(/[^A-Za-z\s]/ig, '');
+        if (!cleanedValue) {
+          error = 'Name is required and must contain only letters.';
+        }
+        break;
+      case 'email':
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+          error = 'Invalid email address.';
+        }
+        break;
+      default:
+        if (!value) {
+          error = `${name.charAt(0).toUpperCase() + name.slice(1)} is required.`;
+        }
+        break;
     }
+
+    setFormData(prevState => ({ ...prevState, [name]: cleanedValue }));
+    setValidationErrors(prevState => ({ ...prevState, [name]: error }));
   };
 
-
-
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
+    let valid = true;
+    let errors = {};
 
-    // Basic form validation (optional):
-    if (!formData.name || !formData.email) {
-      alert('Please enter your name and email.');
-      return;
+    if (!formData.name) {
+      errors.name = 'Name is required.';
+      valid = false;
     }
-    const formDataToSend = new FormData();
+    if (!formData.email) {
+      errors.email = 'Email is required.';
+      valid = false;
+    }
+    if (!formData.number) {
+      errors.number = 'Mobile number is required.';
+      valid = false;
+    }
+    if (!formData.adharno) {
+      errors.adharno = 'Aadhar number is required.';
+      valid = false;
+    }
 
-    formDataToSend.append('ocupation', formData.ocupation);
+    setValidationErrors(errors);
 
+    if (!valid) return;
 
     try {
       const response = await fetch('http://206.189.130.102:6292/api/v1/add-customer', {
@@ -77,31 +92,21 @@ const Registration = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       const data = await response.json();
-      console.log('Success:', data); // Handle successful response (e.g., display success message)
-
-      // Display success message
       alert('Successfully Registered');
     } catch (error) {
-      console.error('Error:', error); // Handle errors (e.g., display error message)
+      console.error('Error:', error);
     }
   };
-
-
-
-
 
   const fetchOccupations = async () => {
     try {
       const response = await fetch('http://206.189.130.102:6292/api/v1/get-Ocupation');
       const data = await response.json();
       setOccupations(data.Ocupation);
-      // console.log(data.occupations);
     } catch (error) {
       console.error('Error fetching occupations:', error);
     }
@@ -109,12 +114,12 @@ const Registration = () => {
 
   useEffect(() => {
     fetchOccupations();
-  }, [])
-
+  }, []);
 
   return (
     <>
       <main className='main-container container-fluid px-0 registration-page'>
+        <Navbar />
         <div className="container d-flex my-auto" style={{ minHeight: "100vh" }}>
           <div className="row my-md-3 ">
             <div className="col-md-6 d-flex align-items-center mb-3 mb-md-0">
@@ -125,11 +130,11 @@ const Registration = () => {
             <div className="col-md-6 my-auto">
               <h3 className="text-263F53 mb-md-4 mb-3 fw-bolder text-center">Registration Form</h3>
               <form action="" className='' onSubmit={handleSubmit}>
-                <div class="card w-100 rounded-4 shadow overflow-hidden mb-4" style={{ background: "#fff0ca" }}>
-                  <div class="card-body">
+                <div className="card w-100 rounded-4 shadow overflow-hidden mb-4" style={{ background: "#fff0ca" }}>
+                  <div className="card-body">
                     <div className="row">
-                      <div class="col-md-12 mb-3">
-                        <label for="exampleInput" class="form-label text-263F53 fw-medium">Full Name</label>
+                      <div className="col-md-12 mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Full Name</label>
                         <input
                           type="text"
                           className="form-control text-263F53 rounded-3"
@@ -139,28 +144,30 @@ const Registration = () => {
                           value={formData.name}
                           onChange={handleChange}
                         />
-
+                        {validationErrors.name && <small className="text-danger">{validationErrors.name}</small>}
                       </div>
-                      <div class="col-md-12 mb-3">
-                        <label for="exampleInput" class="form-label text-263F53 fw-medium">Email</label>
-                        <input type="email" class="form-control text-8A8A8A rounded-3" id="exampleInput" placeholder='abc@example.com' name='email'
+                      <div className="col-md-12 mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Email</label>
+                        <input type="email" className="form-control text-8A8A8A rounded-3" id="exampleInput" placeholder='abc@example.com' name='email'
                           value={formData.email}
                           onChange={handleChange} />
+                        {validationErrors.email && <small className="text-danger">{validationErrors.email}</small>}
                       </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="exampleInput" class="form-label text-263F53 fw-medium">Occupation</label>
+                      <div className="col-md-6 mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Occupation</label>
                         <select id="inputState" className="form-select text-8A8A8A rounded-3" name='ocupation' onChange={handleChange}>
-                          <option value="" disabled >Select Occupation</option>
+                          <option value="" disabled selected hidden>Select Occupation</option>
                           {occupations.map((val, index) => (
                             <option key={index} value={val._id}>{val.name}</option>
                           ))}
                         </select>
+                        {validationErrors.ocupation && <small className="text-danger">{validationErrors.ocupation}</small>}
                       </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="exampleInput" class="form-label text-263F53 fw-medium">Mobile No.</label>
+                      <div className="col-md-6 mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Mobile No.</label>
                         <input
                           type="number"
-                          class="form-control text-263F53 rounded-3"
+                          className="form-control text-263F53 rounded-3"
                           id="exampleInput"
                           placeholder="xxxxxxxxxx"
                           name="number"
@@ -169,32 +176,34 @@ const Registration = () => {
                           minLength={10}
                           maxLength={10}
                         />
+                        {validationErrors.number && <small className="text-danger">{validationErrors.number}</small>}
                       </div>
-                      <div class="mb-3">
-                        <label for="exampleInput" class="form-label text-263F53 fw-medium">Address </label>
-                        <textarea class="form-control rounded-3" placeholder="Enter address here" id="floatingTextarea2" style={{ height: "70px" }} name='address'
+                      <div className="mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Address </label>
+                        <textarea className="form-control rounded-3" placeholder="Enter address here" id="floatingTextarea2" style={{ height: "70px" }} name='address'
                           value={formData.address}
                           onChange={handleChange}></textarea>
+                        {validationErrors.address && <small className="text-danger">{validationErrors.address}</small>}
                       </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="exampleInput" class="form-label text-263F53 fw-medium">State</label>
-                        <input type="text" class="form-control text-263F53 rounded-3" id="exampleInput" placeholder='Enter Full Name' name='state'
+                      <div className="col-md-6 mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">State</label>
+                        <input type="text" className="form-control text-263F53 rounded-3" id="exampleInput" placeholder='Enter State' name='state'
                           value={formData.state}
                           onChange={handleChange} />
-
+                        {validationErrors.state && <small className="text-danger">{validationErrors.state}</small>}
                       </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="exampleInput" class="form-label text-263F53 fw-medium">City</label>
-                        <input type="text" class="form-control text-263F53 rounded-3" id="exampleInput" placeholder='Enter Full Name' name='city'
+                      <div className="col-md-6 mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">City</label>
+                        <input type="text" className="form-control text-263F53 rounded-3" id="exampleInput" placeholder='Enter City' name='city'
                           value={formData.city}
                           onChange={handleChange} />
-
+                        {validationErrors.city && <small className="text-danger">{validationErrors.city}</small>}
                       </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="exampleInput" class="form-label text-263F53 fw-medium">Aadhar No.</label>
+                      <div className="col-md-6 mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Aadhar No.</label>
                         <input
                           type="number"
-                          class="form-control text-263F53 rounded-3"
+                          className="form-control text-263F53 rounded-3"
                           id="exampleInput"
                           placeholder="xxxxxxxxxxxx"
                           name="adharno"
@@ -203,26 +212,26 @@ const Registration = () => {
                           minLength={12}
                           maxLength={12}
                         />
-
+                        {validationErrors.adharno && <small className="text-danger">{validationErrors.adharno}</small>}
                       </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="exampleInput" class="form-label text-263F53 fw-medium">Reference</label>
-                        <input type="text" class="form-control text-263F53 rounded-3" id="exampleInput" placeholder='Enter Reference Name' name='reference'
+                      <div className="col-md-6 mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Reference</label>
+                        <input type="text" className="form-control text-263F53 rounded-3" id="exampleInput" placeholder='Enter Reference Name' name='reference'
                           value={formData.reference}
                           onChange={handleChange} />
+                        {validationErrors.reference && <small className="text-danger">{validationErrors.reference}</small>}
                       </div>
                     </div>
                   </div>
                 </div>
-                <button className="btn theme-btn btn-warning px-3" onClick={handleSubmit} >Submit</button>
+                <button className="btn theme-btn btn-warning px-3" type="submit">Submit</button>
               </form>
             </div>
           </div>
         </div>
-
       </main>
     </>
   )
 }
 
-export default Registration
+export default Registration;

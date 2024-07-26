@@ -48,11 +48,11 @@ const Home = () => {
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 d-flex">
                                 <div className="pe-3 my-auto">
                                     <div className="banner_caption text-left mb-4">
-                                        <h1 className="banner_title ft-normal mb-1"><span className="text-danger fw-bold">Find Now</span><br />Perfect Tradesperson in <br /> Your City</h1>
-                                        <p className="fs-md ft-regular">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                                        <h1 className="banner_title ft-normal mb-1"><span className="text-danger fw-bold">अभी खोजे</span><br /> अपने ही शहर में कुशल कारीगर <br /> </h1>
+                                        <p className="fs-md ft-regular">यहां पर आपके शहर में सबसे अच्छे कारीगर (Perfect Tradesperson) खोजने के कुछ उपाय दिए गए हैं, यहां एक और ऐप है जो विभिन्न प्रकार की सेवाओं के लिए कारीगरों को खोजने और बुक करने में मदद करता है।</p>
                                     </div>
                                     <form className="">
-                                        <span className="fw-semibold">Find</span>
+                                        <span className="fw-semibold">खोजे</span>
                                         <div className="input-group">
                                             <input type="text" className="form-control radius" placeholder="carpenters, plumbers, painters..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                                             <button className="btn text-white input-group-text bg-danger p-3" type="button" id="basic-addon2">
@@ -76,7 +76,7 @@ const Home = () => {
                                 <div class="row">
                                     <div class="section-header text-center">
                                         <h2 class="fw-bold fs-1">
-                                            <span class="text-danger">TRADESPERSON </span>
+                                            <span class="text-danger">कुशल कारीगर </span>
                                         </h2>
                                         <p class="sec-icon"><i class="fa-solid fa-gear"></i></p>
                                     </div>

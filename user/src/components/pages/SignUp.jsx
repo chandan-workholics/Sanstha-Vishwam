@@ -44,7 +44,7 @@ const SignUp = () => {
                 <div className="container " style={{ minHeight: "100vh" }}>
                     <div className="row d-flex align-items-center" style={{ minHeight: "100vh" }}>
                         <div className="col-md-6 col-lg-4 mx-auto">
-                            <h3 className='text-263F53 text-center fw-bolder mb-4'>Sign Up</h3>
+                            <h3 className='text-263F53 text-center fw-bolder mb-4'>साइन अप करें</h3>
                             <div className="card rounded-5 shadow border-0 overflow-hidden">
                                 <div className="card-body p-4">
                                     <div className="form-group mb-3">
@@ -83,7 +83,7 @@ const SignUp = () => {
                                     </div>
                                     <button type="submit" className="btn btn-danger w-100 py-2 bg-00AFEF my-3" onClick={Submit}>Submit</button>
                                     <div className="links text-center">
-                                        <span className='fw-semibold text-263F53'>Already have an account? <Link to="/" className='text-primary modal-link'>Login Now</Link></span>
+                                        <span className='fw-semibold text-263F53'>क्या आपके पास पहले से एक खाता मौजूद है ? <Link to="/home" className='text-primary modal-link'>Login Now</Link></span>
                                     </div>
                                 </div>
                             </div>
