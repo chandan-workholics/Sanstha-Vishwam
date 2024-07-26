@@ -111,8 +111,8 @@ const Customer = () => {
                         <td>{val.reference}</td>
                         <td>
                           <div className='d-flex justify-content-center'>
-                            <button type="button" className="btn btn-info my-1" onClick={() => handleShow(val)}>Edit <span><i className="fa-solid fa-plus"></i></span></button>
-                            <button type="button" className="btn btn-danger mx-1" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => { setDeleteid(val._id) }}>Delete <span className="material-symbols-outlined"> delete </span></button>
+                            <button type="button" className="btn btn-sm py-1 btn-info my-1" onClick={() => handleShow(val)}>Edit <span><i className="fa-solid fa-plus"></i></span></button>
+                            <button type="button" className="btn btn-sm py-1 btn-danger mx-1" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => { setDeleteid(val._id) }}>Delete <span className="material-symbols-outlined"> delete </span></button>
                           </div>
                         </td>
                       </tr>
