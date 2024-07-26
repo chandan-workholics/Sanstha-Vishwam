@@ -80,7 +80,7 @@ const Customer = () => {
           <div className='col-md-12'>
             <div className="card tbl-card mt-3">
               <div className="table-responsive">
-                <table className="table table-striped tbl-blue-theme">
+                <table className="table table-striped tbl-blue-theme" style={{ width: "max-content" }}>
                   <thead>
                     <tr>
                       <th>S.no</th>
@@ -93,6 +93,7 @@ const Customer = () => {
                       <th>City</th>
                       <th>Adhar</th>
                       <th>Reference</th>
+                      <th className='text-center'>Status</th>
                       <th className='text-center'>Action</th>
                     </tr>
                   </thead>
@@ -109,12 +110,12 @@ const Customer = () => {
                         <td>{val.city}</td>
                         <td>{val.adharno}</td>
                         <td>{val.reference}</td>
+                        <td>{val.status === 1 ?
+                          <button type="button" className="btn btn-sm py-1 btn-success text-white mx-1 d-flex justify-content-center" style={{width:"90px"}}>Active </button> : <button type="button" className="btn btn-sm py-1 btn-warning text-white mx-1">Inactive </button>}</td>
                         <td>
                           <div className='d-flex justify-content-center'>
-                            {val.status === 1 ?
-                              <button type="button" className="btn btn-sm py-1 btn-success text-white mx-1">Active </button> : <button type="button" className="btn btn-sm py-1 btn-warning text-white mx-1">Inactive </button>}
-                            <button type="button" className="btn btn-sm py-1 btn-info mx-1 text-white" onClick={() => handleShow(val)}>Edit </button>
-                            <button type="button" className="btn btn-sm py-1 btn-danger mx-1 text-white" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => { setDeleteid(val._id) }}>Delete</button>
+                            <button type="button" className="btn btn-sm btn-info mx-1 text-white d-flex justify-content-center" style={{width:"35px", height:"35px"}} onClick={() => handleShow(val)}><i class="fa-solid fa-pen-to-square"></i> </button>
+                            <button type="button" className="btn btn-sm btn-danger mx-1 text-white d-flex justify-content-center" style={{width:"35px", height:"35px"}} data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => { setDeleteid(val._id) }}><i class="fa-solid fa-trash-can"></i></button>
                           </div>
                         </td>
                       </tr>

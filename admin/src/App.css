@@ -283,7 +283,7 @@ body {
 } */
 .tbl-blue-theme th {
     text-align: -webkit-match-parent;
-    background: #154171 !important;
+    background: #dc3545 !important;
     color: #fff !important;
     text-align: center;
     font-size: 15px;
@@ -292,7 +292,7 @@ body {
 }
 
 .tbl-blue-theme td {
-    text-align: center;
+    text-align: left;
     font-size: 16px;
     font-weight: 500;
 }
@@ -306,16 +306,17 @@ body {
 }
 
 .table-responsive::-webkit-scrollbar {
-    height: 12px;
+    height: 5px;
 }
 
 .table-responsive::-webkit-scrollbar-thumb {
-    background: #b0c9e5;
+    background: #fae6e6;
     border-radius: 10px;
 }
 
 .table-responsive::-webkit-scrollbar-thumb:hover {
-    background: #b0c9e5;
+    background: #fdc9ce;
+    cursor: pointer;
 }
 
 /* .w-max-content {
