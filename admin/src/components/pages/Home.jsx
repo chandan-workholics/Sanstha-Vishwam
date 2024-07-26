@@ -35,7 +35,7 @@ const Home = () => {
     if (response.status === 200) {
       alert("login successfully");
       sessionStorage.setItem("token", res.token);
-      navigate("/home/customer");
+      navigate("/sv/customer");
     } else {
       alert("Invalid Credentials");
     }

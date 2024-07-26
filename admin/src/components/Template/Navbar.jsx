@@ -22,14 +22,14 @@ const Navbar = () => {
                                         <Link className="nav-link" to="/home/customer">Customer</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/home/masters">Masters</Link>
+                                        <Link className="nav-link" to="/sv/masters">Masters</Link>
                                     </li>
                                     <li className="nav-item dropdown d-none-desktop">
                                         <Link to="/" data-bs-toggle="dropdown" className='nav-icon pe-md-0 nav-link'>
                                             <img src={require("../img/profile-img.jpg")} className='avatar profile img-fluid rounded' alt="" />
                                         </Link>
                                         <div className="dropdown-menu dropdown-menu-end">
-                                            <Link to="/home" className='dropdown-item' onClick={logout}>LogOut</Link>
+                                            <Link to="/sv" className='dropdown-item' onClick={logout}>LogOut</Link>
                                         </div>
                                     </li>
                                 </ul>
@@ -43,7 +43,7 @@ const Navbar = () => {
                                         <div className="dropdown-menu dropdown-menu-end">
                                             {/* <Link to="/home" className='dropdown-item'>Profile</Link>
                                             <Link to="/home" className='dropdown-item'>Setting</Link> */}
-                                            <Link to="/home" className='dropdown-item' onClick={logout}>LogOut</Link>
+                                            <Link to="/sv" className='dropdown-item' onClick={logout}>LogOut</Link>
                                         </div>
                                     </li>
                                 </ul>

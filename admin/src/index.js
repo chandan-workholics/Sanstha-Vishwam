@@ -14,10 +14,10 @@ const root = ReactDOM.createRoot(
 root.render(
     <BrowserRouter>
         <Routes>
-            <Route path="/home" element={<App />}>
-                <Route index path="/home" element={<Home />} />
-                <Route index path="/home/masters" element={<Master />} />
-                <Route index path="/home/customer" element={<Cutomer />} />
+            <Route path="/sv" element={<App />}>
+                <Route index path="/sv" element={<Home />} />
+                <Route index path="/sv/masters" element={<Master />} />
+                <Route index path="/sv/customer" element={<Cutomer />} />
                 <Route path='*' element={<PageNotFound />} />
             </Route>
         </Routes>
