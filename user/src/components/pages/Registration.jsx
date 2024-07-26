@@ -243,7 +243,7 @@ const Registration = () => {
                 <img src={thankyouImg} alt="" className="w-100 img-fluid" />
               </div>
               <div className="modal-footer justify-content-center">
-                <Link to="/home" className="text-danger link-underline-light" onClick={() => setModalVisible(false)}>Go to Home Page <i class="fa-solid fa-house ms-2 text-danger"></i></Link>
+                <Link to="/" className="text-danger link-underline-light" onClick={() => setModalVisible(false)}>Go to Home Page <i class="fa-solid fa-house ms-2 text-danger"></i></Link>
               </div>
             </div>
           </div>
