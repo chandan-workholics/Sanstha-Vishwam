@@ -17,7 +17,7 @@ const Navbar = () => {
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav ms-auto">
                                 <Link class="nav-link active" aria-current="page" to="/home">होम</Link>
-                                {!usertoken ? <Link class="nav-link" to="/login">लॉग इन करें</Link> : ''}
+                                {!usertoken ? <Link class="nav-link" to="/login">कारीगर लॉग इन</Link> : ''}
                                 {usertoken ? <Link class="nav-link" to="/registration-form">कारीगर पंजीकरण </Link> : ''}
                                 {usertoken ? <Link class="nav-link" onClick={logout} to="/home">लॉग आउट</Link> : ''}
                             </div>
