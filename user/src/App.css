@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+:root {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: #263F53;
+}
+
+.text-263F53 {
+  color: #263F53;
+}
+
+.bg-fff0ca {
+  background-color: #fff0ca;
+}
+
+/*========================= Registration-Page ======================*/
+.registration-page {
+  .form-control:focus {
+    color: #263F53;
+    border-color: #ffc107;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  .form-select:focus {
+    color: #263F53;
+    border-color: #ffc107;
+    box-shadow: none;
+  }
+}
+
+/*========================= Home-Page ======================*/
+.home-page {
+  .form-control:focus {
+    color: #263F53;
+    border-color: #ffc107;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  .form-select:focus {
+    color: #263F53;
+    border-color: #ffc107;
+    box-shadow: none;
+  }
+
+  .sec-icon {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .sec-icon::before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    left: -70px;
+    margin-top: -5.5px;
+    top: 60%;
+    background: #333333;
+    width: 50px;
+  }
+
+  .sec-icon::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    right: -70px;
+    margin-top: -5.5px;
+    top: 60%;
+    background: #333;
+    width: 50px;
+  }
+
+  .advertisers-service-sec .col {
+    padding: 0 1em 1em 1em;
+    text-align: center;
+  }
+
+  .advertisers-service-sec .service-card {
+    width: 100%;
+    height: 100%;
+    padding: 2em 1.5em;
+    border-radius: 5px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: 0.5s;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .advertisers-service-sec .service-card::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#f0e10d, #dc3545);
+    position: absolute;
+    left: 0%;
+    top: -98%;
+    z-index: -2;
+    transition: all 0.4s cubic-bezier(0.77, -0.04, 0, 0.99);
+  }
+
+  .advertisers-service-sec h3 {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #263F53;
+    margin: 1em 0;
+    z-index: 3;
+  }
+
+  .advertisers-service-sec p {
+    color: #263F53;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    z-index: 3;
+  }
+
+  .advertisers-service-sec .icon-wrapper {
+    position: relative;
+    margin: auto;
+    font-size: 30px;
+    height: 2.5em;
+    width: 2.5em;
+    color: #ffffff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: 0.5s;
+    z-index: 3;
+  }
+
+  .advertisers-service-sec .service-card:hover:after {
+    top: 0%;
+  }
+
+  .service-card .icon-wrapper {
+    background-color: #ffffff;
+    color: #dc3545 !important;
+    border-radius: 50%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+
+  .advertisers-service-sec .service-card:hover h3 {
+    color: #ffffff;
+  }
+
+  .advertisers-service-sec .service-card:hover p {
+    color: #f0f0f0;
+  }
+
+  .advertisers-service-sec .service-card p span {
+    width: 10px;
+  }
+
+  .advertisers-service-sec .service-card:hover p i {
+    color: #f0f0f0;
+    width: 10px;
+  }
+}
