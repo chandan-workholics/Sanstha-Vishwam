@@ -102,7 +102,7 @@ const Master = () => {
 
             <div className='container my-5 pb-5'>
                 <div className='row'>
-                    <div className='col-md-12'>
+                    <div className='col-md-6 mx-auto'>
                         <div className='d-flex justify-content-end'>
                             <button type="button" class="btn btn-info my-2 text-white" onClick={handleShow}>Add <span><i class="fa-solid fa-plus "></i></span></button>
                         </div>
@@ -112,9 +112,7 @@ const Master = () => {
                                     <thead>
                                         <tr>
                                             <th>S.no</th>
-                                            <th>Ocupation</th>
-
-
+                                            <th className='text-start'>Ocupation</th>
                                             <th className='text-center'>Action</th>
                                         </tr>
                                     </thead>

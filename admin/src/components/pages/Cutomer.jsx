@@ -80,19 +80,19 @@ const Customer = () => {
           <div className='col-md-12'>
             <div className="card tbl-card mt-3">
               <div className="table-responsive">
-                <table className="table table-striped tbl-blue-theme" style={{ width: "max-content" }}>
+                <table className="table table-striped tbl-blue-theme" >
                   <thead>
                     <tr>
                       <th>S.no</th>
                       <th>Name</th>
-                      <th>Email</th>
+                      {/* <th>Email</th> */}
                       <th>Contact No</th>
                       <th>Ocupation</th>
                       <th>Adress</th>
                       <th>State</th>
                       <th>City</th>
                       <th>Adhar</th>
-                      <th>Reference</th>
+                      {/* <th>Reference</th> */}
                       <th className='text-center'>Status</th>
                       <th className='text-center'>Action</th>
                     </tr>
@@ -102,14 +102,14 @@ const Customer = () => {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{val.name}</td>
-                        <td>{val.email}</td>
+                        {/* <td>{val.email}</td> */}
                         <td>{val.number}</td>
                         <td>{val.ocupation?.name}</td>
                         <td>{val.adress}</td>
                         <td>{val.state}</td>
                         <td>{val.city}</td>
                         <td>{val.adharno}</td>
-                        <td>{val.reference}</td>
+                        {/* <td>{val.reference}</td> */}
                         <td>{val.status === 1 ?
                           <button type="button" className="btn btn-sm py-1 btn-success text-white mx-1 d-flex justify-content-center" style={{width:"90px"}}>Active </button> : <button type="button" className="btn btn-sm py-1 btn-warning text-white mx-1 d-flex justify-content-center" style={{width:"90px"}}>Inactive </button>}</td>
                         <td>
