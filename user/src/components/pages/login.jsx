@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const LoginCard = () => {
 
@@ -17,7 +18,7 @@ const LoginCard = () => {
         e.preventDefault();
         const { username, password } = data;
         if (!username || !password) {
-            alert('Please enter All the fields');
+            toast.warning('Please enter all the fields.');
             return;
         }
         const fetchdata = fetch("http://206.189.130.102:6292/api/v1/user-login", {
@@ -30,10 +31,10 @@ const LoginCard = () => {
 
         if (response.status === 200) {
             sessionStorage.setItem("token", res.token);
-            alert('Log-in successfully')
+            toast.success('Log-in successfully')
             navigate("/home");
         } else {
-            alert("Invalid Credentials");
+            toast.error("Invalid Credentials");
         }
     };
 

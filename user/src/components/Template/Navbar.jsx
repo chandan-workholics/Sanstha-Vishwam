@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const Navbar = () => {
-    const usertoken = sessionStorage.getItem('token');
-    const logout = () => {
-        sessionStorage.clear();
-    }
+    // const usertoken = sessionStorage.getItem('token');
+    // const logout = () => {
+    //     sessionStorage.clear();
+    // }
     return (
         <>
             <div className="container-fluid shadow bg-white position-fixed w-100 start-0 top-0" style={{ zIndex: "1111" }}>

@@ -26,6 +26,27 @@ body {
     vertical-align: middle;
 }
 
+.nav-link.active {
+    color: #dc3545 !important;
+}
+
+.nav-link:hover {
+    color: #dc3545 !important;
+}
+
+.form-control:focus {
+    color: #263F53;
+    border-color: #dc3545 !important;
+    outline: 0;
+    box-shadow: none;
+}
+
+.form-select:focus {
+    color: #263F53;
+    border-color: #dc3545 !important;
+    box-shadow: none;
+}
+
 /*--------------------- Navbar-CSS --------------------*/
 
 .nav-link:hover {
@@ -92,6 +113,7 @@ body {
     border: 1px solid #2065AE !important;
     color: #2065AE !important;
 }
+
 .btn-danger:hover {
     background-color: #EFF7FF;
     border: 1px solid #dc3545 !important;
@@ -220,7 +242,7 @@ body {
 .banner-content-area {
     width: 100%;
     min-height: fit-content;
-    background: #2065AE;
+    background: #dc3545;
     display: flex;
     align-items: center;
 }
@@ -268,15 +290,15 @@ body {
 }
 
 .login-form-card {
-    background-color: #dfecf8;
-    border-radius: 30px;
+    background-color: #fff0ca;
+    border-radius: 16px;
     padding: 20px;
     margin: 30px auto;
 }
 
 
 .tbl-card {
-    
+
     overflow: hidden;
 }
 
@@ -333,8 +355,8 @@ body {
 }
 
 .modal-header {
-    background: #eff7ff;
-    color: #11375F;
+    background: #fff0ca;
+    color: #dc3545;
     font-weight: 600;
     font-size: 20px;
 }
@@ -345,7 +367,7 @@ body {
 }
 
 .modal-closebtn span {
-    color: #11375F;
+    color: #dc3545;
 }
 
 .card-date-selector {

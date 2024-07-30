@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const Home = () => {
   const navigate = useNavigate()
@@ -25,7 +26,7 @@ const Home = () => {
   const submit = async (e) => {
     e.preventDefault();
     if (!username || !password) {
-      alert('Please enter All the fields');
+      toast.warning("Please enter all the fields");
       return;
     }
     const fetchdata = fetch("http://206.189.130.102:6292/api/v1/user-login", requestOptions);
@@ -33,11 +34,11 @@ const Home = () => {
     const res = await response.json();
 
     if (response.status === 200) {
-      alert("login successfully");
+      toast.success("login successfully");
       sessionStorage.setItem("token", res.token);
       navigate("/sv/customer");
     } else {
-      alert("Invalid Credentials");
+      toast.error("Invalid Credentials");
     }
   };
 
@@ -50,7 +51,7 @@ const Home = () => {
             <div className="container">
               <div className="row">
                 <div className="col-12 my-5">
-                  <Link className="navbar-brand" to="#"></Link>
+                  <Link className="navbar-brand text-warning fw-bold" to="#"><h1 className='mb-0'>Onlinekarigar</h1></Link>
                 </div>
               </div>
             </div>
@@ -75,14 +76,14 @@ const Home = () => {
 
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label login-title-h5">Username <span className='ms-2'><i class="fa-solid fa-user"></i></span></label>
-                          <input type="text" class="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp" value={username} onChange={(e) => setusername(e.target.value)} />
+                          <input type="text" class="form-control rounded" id="exampleInputEmail1" aria-describedby="emailHelp" value={username} onChange={(e) => setusername(e.target.value)} />
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputPassword1" class="form-label login-title-h5">Password <span className="ms-2"><i class="fa-solid fa-key"></i></span></label>
-                          <input type="password" class="form-control  rounded-pill" id="exampleInputPassword1" value={password} onChange={(e) => setpassword(e.target.value)} />
+                          <input type="password" class="form-control  rounded" id="exampleInputPassword1" value={password} onChange={(e) => setpassword(e.target.value)} />
                         </div>
                         <div className='d-flex justify-content-center mt-3 mb-3'>
-                          <button type="submit" class="btn btn-info" onClick={submit}>Submit</button>
+                          <button type="submit" class="btn btn-warning rounded-5 mt-3 px-4" onClick={submit}>Submit</button>
                         </div>
 
                       </div>
