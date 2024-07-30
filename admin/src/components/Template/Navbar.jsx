@@ -19,7 +19,7 @@ const Navbar = () => {
                             <div className="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/home/customer">Customer</Link>
+                                        <Link className="nav-link" to="/sv/customer">Customer</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/sv/masters">Masters</Link>
