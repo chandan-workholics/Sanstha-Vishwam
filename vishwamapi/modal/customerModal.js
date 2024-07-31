@@ -11,9 +11,15 @@ const CustomerSchema = new mongoose.Schema({
     number: {
         type: Number
     },
+    whatsappno: {
+        type: Number
+    },
+    aadharimg: {
+        type: String
+    },
     ocupation:
     {
-        type: mongoose.Schema.Types.ObjectId, 
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Ocupation",
     },
     adress: {
@@ -35,7 +41,7 @@ const CustomerSchema = new mongoose.Schema({
         type: Number,
         default: 0
     }
-     
+
 }, { timestamps: true })
 
 
