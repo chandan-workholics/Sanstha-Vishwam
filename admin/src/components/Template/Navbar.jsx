@@ -12,9 +12,9 @@ const Navbar = () => {
                 <div className="container ">
                     <nav className="navbar navbar-expand-sm">
                         <div className="container-fluid">
-                            <Link className="navbar-brand text-warning fs-3 fw-bolder" to="#">Sanstha Vishwam</Link>
+                            <Link className="navbar-brand text-warning fs-3 fw-bolder" to="#">Onlinekarigar</Link>
                             <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                                <span className="text-white"><i class="fa-solid fa-bars-staggered"></i></span>
+                                <span className="text-warning"><i class="fa-solid fa-bars-staggered"></i></span>
                             </button>
                             <div className="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
                                 <ul className="navbar-nav">

@@ -148,12 +148,13 @@ body {
     z-index: 3;
   }
 
-  .advertisers-service-sec p {
+  .advertisers-service-sec p, .advertisers-service-sec p a {
     color: #263F53;
     font-size: 15px;
     line-height: 1.6;
     letter-spacing: 0.03em;
     z-index: 3;
+    text-decoration: none;
   }
 
   .advertisers-service-sec .icon-wrapper {
@@ -185,7 +186,7 @@ body {
     color: #ffffff;
   }
 
-  .advertisers-service-sec .service-card:hover p {
+  .advertisers-service-sec .service-card:hover p, .service-card:hover p a {
     color: #f0f0f0;
   }
 

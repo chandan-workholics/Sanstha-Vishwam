@@ -6,6 +6,8 @@ import App from './App';
 import './App.css';
 import Cutomer from './components/pages/Cutomer';
 import Master from './components/pages/Master';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const root = ReactDOM.createRoot(
@@ -13,6 +15,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <BrowserRouter>
+        <ToastContainer rtl />
         <Routes>
             <Route path="/sv" element={<App />}>
                 <Route index path="/sv" element={<Home />} />

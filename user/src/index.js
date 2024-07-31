@@ -8,6 +8,8 @@ import LoginCard from './components/pages/login';
 import SignUp from './components/pages/SignUp';
 import Registration from './components/pages/Registration';
 import Home from './components/pages/Home';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(
     document.getElementById("root")
@@ -16,6 +18,7 @@ const root = ReactDOM.createRoot(
 root.render(
 
     <BrowserRouter>
+        <ToastContainer rtl />
         <Routes>
             <Route path="/" element={<App />}>
                 <Route index path="/" element={< Home />} />

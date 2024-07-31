@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Modal } from "react-bootstrap";
 import Navbar from '../Template/Navbar'
 import Home from './Home';
+import { toast } from "react-toastify";
 
 const Product = () => {
   const usertoken = sessionStorage.getItem('token')
@@ -44,12 +45,12 @@ const Product = () => {
     const response = await fetchdata;
     await response.json();
     if (response.status === 200) {
-      alert('product add successfully')
+      toast.success('Product added successfully.')
       handleClose();
       getproduct();
       setPost({ name: '', price: '', unit: '' })
     } else {
-      alert("Invalid Credentials");
+      toast.error("Invalid Credentials");
     }
   }
 
@@ -66,7 +67,7 @@ const Product = () => {
       handleeditClose();
       getproduct();
     } else {
-      alert("Invalid Credentials");
+      toast.error("Invalid Credentials");
     }
   }
 

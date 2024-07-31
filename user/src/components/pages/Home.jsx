@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../Template/Navbar';
 import workerImg from '../img/Constructionworker.png';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
     const [data, setData] = useState([]);
+    const [occupations, setOccupations] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
     const getData = async () => {
@@ -17,6 +19,20 @@ const Home = () => {
         }
     };
 
+    const fetchOccupations = async () => {
+        try {
+            const response = await fetch('http://206.189.130.102:6292/api/v1/get-Ocupation');
+            const data = await response.json();
+            setOccupations(data.Ocupation);
+        } catch (error) {
+            console.error('Error fetching occupations:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchOccupations();
+    }, []);
+
     useEffect(() => {
         getData();
     }, []);
@@ -24,6 +40,7 @@ const Home = () => {
     const filteredData = data.filter((item) =>
         item.ocupation?.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
 
     return (
         <>
@@ -40,12 +57,24 @@ const Home = () => {
                                     </div>
                                     <form className="">
                                         <span className="fw-semibold">खोजे</span>
-                                        <div className="input-group">
+                                        <div class="input-group">
+                                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" onChange={(e) => setSearchTerm(e.target.value)}>
+                                                <option selected>Choose...</option>
+                                                {occupations?.map((val, index) => {
+                                                    return (<option value={val.name}>{val.name}</option>)
+                                                }
+                                                )}
+                                            </select>
+                                            <button class="btn text-white input-group-text bg-danger p-3" type="button">
+                                                Search<i className="fa-solid fa-magnifying-glass ms-2 text-white"></i>
+                                            </button>
+                                        </div>
+                                        {/* <div className="input-group">
                                             <input type="text" className="form-control radius" placeholder="carpenters, plumbers, painters..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                                             <button className="btn text-white input-group-text bg-danger p-3" type="button" id="basic-addon2">
                                                 Search<i className="fa-solid fa-magnifying-glass ms-2 text-white"></i>
                                             </button>
-                                        </div>
+                                        </div> */}
                                     </form>
                                 </div>
                             </div>
@@ -67,7 +96,7 @@ const Home = () => {
                                         <p class="sec-icon"><i class="fa-solid fa-gear"></i></p>
                                     </div>
                                 </div>
-                                <div class="row mt-5 mt-md-4 row-cols-1 row-cols-sm-1 row-cols-md-3 justify-content-center">
+                                <div class="row mt-5 mt-md-4 row-cols-1 row-cols-sm-1 row-cols-md-3">
 
 
                                     {filteredData?.filter(item => item?.status === 1).map((item, index) => (
@@ -78,15 +107,40 @@ const Home = () => {
                                                 </div>
                                                 <h3>{item?.name}</h3>
                                                 <span className="d-flex align-items-center">
-                                                    <p className='mb-1 text-start d-flex align-items-center justify-content-center' style={{ width: "25px" }}><i class="fa-solid fa-briefcase me-2"></i></p>
+                                                    <p className='mb-1 text-start d-flex align-items-center justify-content-center' style={{ width: "25px" }}>
+                                                        <i class="fa-solid fa-briefcase me-2"></i>
+                                                    </p>
                                                     <p className='mb-1 text-start d-flex align-items-center'>{item?.ocupation?.name}</p>
                                                 </span>
                                                 <span className="d-flex align-items-center">
-                                                    <p className='mb-1 text-start d-flex align-items-center justify-content-center' style={{ width: "25px" }}><i class="fa-brands fa-whatsapp me-2"></i></p>
-                                                    <p className='mb-1 text-start d-flex align-items-center'>{item?.number}</p>
+                                                    <p className='mb-1 text-start d-flex align-items-center justify-content-center' style={{ width: "25px" }}>
+                                                        <i class="fa-brands fa-whatsapp me-2"></i>
+                                                    </p>
+                                                    <p className='mb-1 text-start d-flex align-items-center'>
+                                                        <Link
+                                                            to={`https://wa.me/${item?.whatsappno}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            aria-label={`Chat with ${item?.whatsappno}`}
+                                                        >
+                                                            {item?.whatsappno}
+                                                        </Link>
+                                                    </p>
                                                 </span>
                                                 <span className="d-flex align-items-center">
-                                                    <p className='mb-1 text-start d-flex align-items-center justify-content-center' style={{ width: "25px" }}><i class="fa-solid fa-location-dot me-2"></i></p>
+                                                    <p className='mb-1 text-start d-flex align-items-center justify-content-center' style={{ width: "25px" }}>
+                                                        <i class="fa-solid fa-phone me-2"></i>
+                                                    </p>
+                                                    <p className='mb-1 text-start d-flex align-items-center'>
+                                                        <Link to={`tel:${item?.number}`} aria-label={`Call ${item?.number}`}>
+                                                            {item?.number}
+                                                        </Link>
+                                                    </p>
+                                                </span>
+                                                <span className="d-flex align-items-center">
+                                                    <p className='mb-1 text-start d-flex align-items-center justify-content-center' style={{ width: "25px" }}>
+                                                        <i class="fa-solid fa-location-dot me-2"></i>
+                                                    </p>
                                                     <p className='mb-1 text-start d-flex align-items-center'>{item?.city}</p>
                                                 </span>
                                             </div>

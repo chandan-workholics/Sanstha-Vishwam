@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Modal } from "react-bootstrap";
 import Navbar from '../Template/Navbar'
 import Home from './Home';
+import { toast } from "react-toastify";
 
 const Master = () => {
     const usertoken = sessionStorage.getItem('token')
@@ -44,12 +45,12 @@ const Master = () => {
         const response = await fetchdata;
         await response.json();
         if (response.status === 200) {
-            alert('ocupation add successfully')
+            toast.success('Occupation added successfully.')
             handleClose();
             getocupation();
             setPost({ name: '' })
         } else {
-            alert("Invalid Credentials");
+            toast.error("Invalid Credentials");
         }
     }
 
@@ -66,7 +67,7 @@ const Master = () => {
             handleeditClose();
             getocupation();
         } else {
-            alert("Invalid Credentials");
+            toast.error("Invalid Credentials");
         }
     }
 
@@ -104,7 +105,7 @@ const Master = () => {
                 <div className='row'>
                     <div className='col-md-6 mx-auto'>
                         <div className='d-flex justify-content-end'>
-                            <button type="button" class="btn btn-info my-2 text-white" onClick={handleShow}>Add <span><i class="fa-solid fa-plus "></i></span></button>
+                            <button type="button" class="btn btn-success rounded-pill my-2 text-white" onClick={handleShow}>Add <span><i class="fa-solid fa-plus "></i></span></button>
                         </div>
                         <div className="card tbl-card mt-3">
                             <div className="table-responsive">
@@ -160,7 +161,7 @@ const Master = () => {
                                     </div>
 
 
-                                    <button type="submit" class="btn btn-info" onClick={addproduct}>Submit</button>
+                                    <button type="submit" class="btn btn-success text-white rounded-pill" onClick={addproduct}>Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -191,7 +192,7 @@ const Master = () => {
                                     </div>
 
 
-                                    <button type="submit" class="btn btn-info" onClick={() => { upadateproduct(edit._id) }}>Submit</button>
+                                    <button type="submit" class="btn btn-warning text-white rounded-pill" onClick={() => { upadateproduct(edit._id) }}>Submit</button>
                                 </form>
                             </div>
                         </div>

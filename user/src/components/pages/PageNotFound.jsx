@@ -1,17 +1,11 @@
 import React from "react";
+import pageNotFoundImg from "../img/404-ErrorPagenotFound.png"
 
 const PageNotFound = () => {
 	return (
 		<>
-			<div className="feature" id="content">
-				<div id="content-inner">
-					<main id="contentbar">
-						<div className="article">
-							<h1 className="center">Oops page not found</h1>
-						</div>
-					</main>
-					<div className="clr"></div>
-				</div>
+			<div className="container d-flex justify-content-center align-items-center" style={{minHeight:"100vh"}}>
+				<img src={pageNotFoundImg} alt="" className="w-50 img-fluid" />
 			</div>
 		</>
 	);

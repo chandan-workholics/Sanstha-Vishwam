@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import registrationFormImg from '../img/registrationfrom-img.png';
+import paintImg from '../img/paint-img.png';
+import electricianImg from '../img/electrician-img.png';
+import BricklayerWorkerImg from '../img/Bricklayer-worker.png';
 import Navbar from '../Template/Navbar';
 import thankyouImg from '../img/thankyou-png.png';
 import { Link } from "react-router-dom";
@@ -79,6 +82,10 @@ const Registration = () => {
       errors.number = 'Mobile number is required.';
       valid = false;
     }
+    if (!formData.whatsappno) {
+      errors.whatsappno = 'Whatsapp number is required.';
+      valid = false;
+    }
     if (!formData.adharno) {
       errors.adharno = 'Aadhar number is required.';
       valid = false;
@@ -124,9 +131,26 @@ const Registration = () => {
         <div className="container d-flex my-auto" style={{ minHeight: "100vh" }}>
           <div className="row my-md-3 ">
             <div className="col-md-6 d-flex align-items-center mb-3 mb-md-0">
-              <div className="text-center text-md-start">
-                <img src={registrationFormImg} alt="" className="w-75 my-auto" />
+              <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src={BricklayerWorkerImg} className="d-block w-100" alt="..." />
+                  </div>
+                  <div class="carousel-item">
+                    <img src={registrationFormImg} className="d-block w-100" alt="..." />
+                  </div>
+                  <div class="carousel-item ">
+                    <img src={paintImg} className="d-block w-100" alt="..." />
+                  </div>
+                  <div class="carousel-item">
+                    <img src={electricianImg} className="d-block w-100" alt="..." />
+                  </div>
+
+                </div>
               </div>
+              {/* <div className="text-center text-md-start">
+                <img src={registrationFormImg} alt="" className="w-75 my-auto" />
+              </div> */}
             </div>
             <div className="col-md-6 my-auto">
               <h3 className="text-263F53 mb-md-4 mb-3 fw-bolder text-center">Registration Form</h3>
@@ -147,7 +171,7 @@ const Registration = () => {
                         />
                         {validationErrors.name && <small className="text-danger">{validationErrors.name}</small>}
                       </div>
-                      <div className="col-md-12 mb-3">
+                      <div className="col-md-6 mb-3">
                         <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Email (ईमेल)</label>
                         <input type="email" className="form-control text-8A8A8A rounded-3" id="exampleInput" placeholder='abc@example.com' name='email'
                           value={formData.email}
@@ -178,6 +202,21 @@ const Registration = () => {
                           maxLength={10}
                         />
                         {validationErrors.number && <small className="text-danger">{validationErrors.number}</small>}
+                      </div>
+                      <div className="col-md-6 mb-3">
+                        <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Whatsapp No. (व़ॉट्‌सॅप् नंबर)<span className='text-danger'>*</span></label>
+                        <input
+                          type="number"
+                          className="form-control text-263F53 rounded-3"
+                          id="exampleInput"
+                          placeholder="xxxxxxxxxx"
+                          name="number"
+                          value={formData.whatsappno}
+                          onChange={handleChange}
+                          minLength={10}
+                          maxLength={10}
+                        />
+                        {validationErrors.whatsappno && <small className="text-danger">{validationErrors.whatsappno}</small>}
                       </div>
                       <div className="mb-3">
                         <label htmlFor="exampleInput" className="form-label text-263F53 fw-medium">Address (पता)<span className='text-danger'>*</span></label>
