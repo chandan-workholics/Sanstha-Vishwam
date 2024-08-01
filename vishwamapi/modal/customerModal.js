@@ -26,10 +26,12 @@ const CustomerSchema = new mongoose.Schema({
         type: String
     },
     state: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "State",
     },
     city: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "City",
     },
     adharno: {
         type: String

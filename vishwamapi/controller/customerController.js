@@ -15,7 +15,7 @@ exports.addcustomer = async (req, res) => {
 
 exports.getcustomer = async (req, res) => {
     try {
-        const data = await customer.find().populate('ocupation')
+        const data = await customer.find().populate('ocupation').populate('state').populate('city')
         res.status(200).json({
             success: true,
             data
@@ -49,7 +49,7 @@ exports.deletecustomer = async (req, res) => {
     }
 }
 
-exports.updatecustomer = async(req, res) => {
+exports.updatecustomer = async (req, res) => {
     try {
         const { id } = req.params;
         const updateData = req.body;
